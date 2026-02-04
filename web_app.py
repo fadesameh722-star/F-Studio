@@ -15,14 +15,22 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- إخفاء العلامات المائية والقوائم (بعد قفل القوس) ---
+# --- كود الإخفاء القوي (The Nuclear CSS) ---
+# ده بيخفي الشريط اللي فوق، والفوتر، وأزرار التحكم بتاعة الاستضافة
 hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
+    <style>
+    /* إخفاء القائمة الرئيسية */
+    #MainMenu {visibility: hidden;}
+    /* إخفاء الفوتر والكلمات اللي تحت */
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    /* إخفاء الشريط العلوي بالكامل */
+    [data-testid="stToolbar"] {visibility: hidden !important;}
+    [data-testid="stHeader"] {visibility: hidden !important;}
+    /* إخفاء أيقونة التزيين اللي فوق */
+    .st-emotion-cache-12fmw14 {display: none;}
+    </style>
+"""
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- 2. دوال النظام والتحقق ---
