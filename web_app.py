@@ -14,16 +14,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-# --- إخفاء العلامات المائية والقوائم ---
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            [data-testid="stToolbar"] {visibility: hidden !important;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- 2. دوال النظام والتحقق ---
 def check_requirements():
@@ -301,5 +291,4 @@ with tab2:
                     
                     stat.success(f"✅ تم الحفظ في: {save_path}")
                     if sys.platform == 'win32':
-
                         st.button("📂 فتح المجلد", on_click=lambda: os.startfile(save_path))
