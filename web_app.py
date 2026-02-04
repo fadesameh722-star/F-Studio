@@ -7,13 +7,23 @@ import shutil
 from datetime import timedelta
 import pandas as pd
 
-# --- 1. إعدادات الصفحة (تم إزالة الاسم) ---
+# --- 1. إعدادات الصفحة ---
 st.set_page_config(
     page_title="F Studio",
     page_icon="🎬",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# --- إخفاء العلامات المائية والقوائم (بعد قفل القوس) ---
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # --- 2. دوال النظام والتحقق ---
 def check_requirements():
@@ -198,7 +208,7 @@ with tab1:
                 stat.text(st.session_state.status_msg)
 
 # ==================================================
-# 2. القوائم (Fixes: Empty & Crash)
+# 2. القوائم
 # ==================================================
 with tab2:
     cp1, cp2 = st.columns([4, 1])
